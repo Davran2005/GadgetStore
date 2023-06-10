@@ -1,4 +1,4 @@
-package peaksoft.dto.request;
+package peaksoft.dto.favorite;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class FavoriteRequest {
-    private Long userId;
     private Long productId;
+    private Long userId;
+
+
 }

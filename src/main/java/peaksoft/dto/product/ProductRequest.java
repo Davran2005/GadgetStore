@@ -1,5 +1,7 @@
-package peaksoft.dto.request;
+package peaksoft.dto.product;
 
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

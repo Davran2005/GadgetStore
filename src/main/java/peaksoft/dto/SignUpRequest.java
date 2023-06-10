@@ -1,11 +1,9 @@
-package peakosft.dto;
+package peaksoft.dto;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import peakosft.enums.Role;
+import peaksoft.enums.Role;
 
 @Builder
 @Data

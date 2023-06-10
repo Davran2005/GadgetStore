@@ -1,9 +1,10 @@
-package peaksoft.dto.request;
+package peaksoft.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import peaksoft.enums.Role;
 
 @Getter
 @Setter

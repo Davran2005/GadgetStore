@@ -1,8 +1,9 @@
-package peakosft.service;
+package peaksoft.service;
 
-import peakosft.dto.AuthenticationResponse;
-import peakosft.dto.SignInRequest;
-import peakosft.dto.SignUpRequest;
+
+import peaksoft.dto.AuthenticationResponse;
+import peaksoft.dto.SignInRequest;
+import peaksoft.dto.SignUpRequest;
 
 public interface AuthenticationService {
 

@@ -1,4 +1,4 @@
-package peakosft.config;
+package peaksoft.config;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import jakarta.persistence.EntityNotFoundException;
@@ -13,8 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import peakosft.entity.User;
-import peakosft.repository.UserRepository;
+import peaksoft.entity.User;
+import peaksoft.repository.UserRepository;
 
 import java.io.IOException;
 

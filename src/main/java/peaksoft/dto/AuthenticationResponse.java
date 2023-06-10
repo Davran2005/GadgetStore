@@ -1,9 +1,10 @@
-package peakosft.dto;
+package peaksoft.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import peakosft.enums.Role;
+import peaksoft.enums.Role;
+
 @Data
 @Builder
 @AllArgsConstructor

@@ -1,14 +1,15 @@
-package peakosft.api;
+package peaksoft.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import peakosft.dto.AuthenticationResponse;
-import peakosft.dto.SignInRequest;
-import peakosft.dto.SignUpRequest;
-import peakosft.service.AuthenticationService;
+
+import peaksoft.dto.AuthenticationResponse;
+import peaksoft.dto.SignInRequest;
+import peaksoft.dto.SignUpRequest;
+import peaksoft.service.AuthenticationService;
 
 @RestController
 @RequestMapping("/auth")

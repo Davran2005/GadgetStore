@@ -1,4 +1,4 @@
-package peakosft.service.serviceImpl;
+package peaksoft.service.impl;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -7,13 +7,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import peakosft.config.JwtService;
-import peakosft.dto.AuthenticationResponse;
-import peakosft.dto.SignInRequest;
-import peakosft.dto.SignUpRequest;
-import peakosft.entity.User;
-import peakosft.repository.UserRepository;
-import peakosft.service.AuthenticationService;
+import peaksoft.config.JwtService;
+import peaksoft.dto.AuthenticationResponse;
+import peaksoft.dto.SignInRequest;
+import peaksoft.dto.SignUpRequest;
+import peaksoft.entity.User;
+import peaksoft.repository.UserRepository;
+import peaksoft.service.AuthenticationService;
+
 
 @Service
 @Transactional
@@ -23,7 +24,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
-
 
     @Override
     public AuthenticationResponse signUp(SignUpRequest signUpRequest) {
@@ -36,7 +36,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .firstName(signUpRequest.getFirstName())
                 .lastName(signUpRequest.getLastName())
                 .email(signUpRequest.getEmail())
-                .phoneNumber(signUpRequest.getPhoneNumber())
                 .password(passwordEncoder.encode(signUpRequest.getPassword()))
                 .role(signUpRequest.getRole())
                 .build();
@@ -50,6 +49,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .role(user.getRole())
                 .build();
     }
+
     @Override
     public AuthenticationResponse signIn(SignInRequest signInRequest) {
         User user = userRepository.getUserByEmail(signInRequest.getEmail())
@@ -57,15 +57,15 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                         "USer with email: " + signInRequest.getEmail() + " not found"
                 ));
 
-        if(signInRequest.getEmail().isBlank()){
+        if (signInRequest.getEmail().isBlank()) {
             throw new BadCredentialsException("Email doesn't exist!");
         }
 
-        if(!passwordEncoder.matches(signInRequest.getPassword(), user.getPassword())){
+        if (!passwordEncoder.matches(signInRequest.getPassword(), user.getPassword())) {
             throw new BadCredentialsException("Incorrect password!");
         }
 
-        String jwtToken=jwtService.generateToken(user);
+        String jwtToken = jwtService.generateToken(user);
 
         return AuthenticationResponse
                 .builder()

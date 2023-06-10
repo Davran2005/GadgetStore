@@ -1,4 +1,4 @@
-package peakosft.dto;
+package peaksoft.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
