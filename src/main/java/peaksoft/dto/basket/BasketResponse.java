@@ -5,18 +5,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Setter
 @Getter
 @NoArgsConstructor
 @Builder
 public class BasketResponse {
     private  Long id;
-    private Long productId;
-    private Long userId;
+    private String name;
+    private int amount;
+   private int sum;
 
-    public BasketResponse(Long id, Long productId, Long userId) {
+    public BasketResponse(Long id, String name, int amount, int sum) {
         this.id = id;
-        this.productId = productId;
-        this.userId = userId;
+        this.name = name;
+        this.amount = amount;
+        this.sum = sum;
     }
 }

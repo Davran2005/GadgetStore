@@ -1,16 +1,19 @@
 package peaksoft.service;
 
 import peaksoft.dto.favorite.FavoriteRequest;
+import peaksoft.dto.favorite.FavoriteResponse;
 import peaksoft.dto.simpl.SimpleResponse;
 import peaksoft.dto.user.UserRequest;
 import peaksoft.dto.user.UserResponse;
+import peaksoft.entity.Product;
+import peaksoft.entity.User;
 
 import java.util.List;
 
 public interface FavoriteService {
-    SimpleResponse saveFavorite(FavoriteRequest favoriteRequest);
-    List<UserResponse> getAllFavorite();
-    UserResponse getFavoriteById(Long id);
-    SimpleResponse updateFavoriteById(Long id,FavoriteRequest favoriteRequest);
-    SimpleResponse deleteById(Long id);
+    SimpleResponse saveFavorite(Long userId,FavoriteRequest favoriteRequest);
+    List<FavoriteResponse> getAllFavorite();
+    FavoriteResponse addToFavorites(User user, Product product);
+    FavoriteResponse removeFromFavorites(User user, Product product);
+    FavoriteResponse getFavoriteByProductAndUser(String email);
 }

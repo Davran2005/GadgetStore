@@ -21,6 +21,7 @@ public class Product {
     @SequenceGenerator(name = "product_gen",sequenceName = "product_seq",allocationSize = 1)
     private Long id;
     private String name;
+    private int price;
     @CollectionTable(name = "images")
     @ElementCollection
     private List<String> images;

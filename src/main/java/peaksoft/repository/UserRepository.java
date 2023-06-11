@@ -8,7 +8,7 @@ import peaksoft.entity.User;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface  UserRepository extends JpaRepository<User, Long> {
     @Query("select new peaksoft.dto.user.UserResponse(u.id,u.firstName,u.lastName,u.email,u.password,u.createdDate,u.updateDate,u.role) from User u")
     public List<UserResponse> getAllUser();
     Optional<UserResponse> getUserById(Long id);
@@ -17,4 +17,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> getUserByEmail(String email);
 
     boolean existsByEmail(String email);
+
+    Optional<UserResponse> getUserEmail(String email);
 }

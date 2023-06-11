@@ -1,9 +1,7 @@
 package peaksoft.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import static jakarta.persistence.CascadeType.*;
 
@@ -11,6 +9,8 @@ import static jakarta.persistence.CascadeType.*;
 @Table(name = "favorites")
 @Setter
 @Getter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Favorite {
     @Id

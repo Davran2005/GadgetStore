@@ -1,12 +1,16 @@
 package peaksoft.dto.product;
-import lombok.*;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @Builder
-public class    ProductResponse {
+public class SortResponse {
     private Long id;
     private String name;
     private int price;
@@ -15,7 +19,7 @@ public class    ProductResponse {
     private Boolean isFavorite;
     private String madeIn;
 
-    public ProductResponse(Long id, String name, int price, List<String> images, String characteristic, Boolean isFavorite, String madeIn) {
+    public SortResponse(Long id, String name, int price, List<String> images, String characteristic, Boolean isFavorite, String madeIn) {
         this.id = id;
         this.name = name;
         this.price = price;
