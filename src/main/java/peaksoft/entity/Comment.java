@@ -1,34 +1,27 @@
 package peaksoft.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
-
-import static jakarta.persistence.CascadeType.*;
+import java.util.List;
 
 @Entity
 @Table(name = "comments")
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Comment {
     @Id
-    @GeneratedValue(generator = "comment_gen",strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "comment_gen")
     @SequenceGenerator(name = "comment_gen",sequenceName = "comment_seq",allocationSize = 1)
     private Long id;
     private String comment;
-    private ZonedDateTime createDate;
-    @ManyToOne(cascade = {DETACH,MERGE,REFRESH})
+    private ZonedDateTime createdAt;
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
     private User user;
-    @ManyToOne(cascade = {DETACH,MERGE,REFRESH})
-    private Product product;
-
-    public Comment(String comment, ZonedDateTime createDate) {
-        this.comment = comment;
-        this.createDate = createDate;
-    }
+    @OneToMany(mappedBy = "comment",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    private List<Product> product;
 }

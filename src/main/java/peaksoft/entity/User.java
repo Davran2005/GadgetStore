@@ -7,40 +7,40 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import peaksoft.enums.Role;
 
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.List;
 
-import static jakarta.persistence.CascadeType.*;
-
 @Entity
 @Table(name = "users")
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
+@Builder
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(generator = "user_gen",strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_gen")
     @SequenceGenerator(name = "user_gen",sequenceName = "user_seq",allocationSize = 1)
     private Long id;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
     private String password;
-    private ZonedDateTime createdDate;
+    private ZonedDateTime createdAt;
     private ZonedDateTime updateDate;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @OneToOne(mappedBy = "user",cascade = {MERGE,DETACH,REFRESH,REMOVE})
-    private Basket basket;
-    @OneToMany(mappedBy = "user",cascade = {MERGE,DETACH,REFRESH,REMOVE})
-    private List<Favorite> favorite;
-    @OneToMany(mappedBy = "user",cascade = {MERGE,DETACH,REFRESH,REMOVE})
-    private List<Comment>comments;
 
+    @OneToOne(mappedBy = "user" , cascade = {CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.REMOVE})
+    private Basket basket;
+
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.REMOVE})
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.REMOVE})
+    private List<Favorite>favorites;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -75,5 +75,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }

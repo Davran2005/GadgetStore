@@ -1,22 +1,24 @@
 package peaksoft.service;
 
-import peaksoft.dto.AuthenticationResponse;
-import peaksoft.dto.SignInRequest;
-import peaksoft.dto.SignUpRequest;
-import peaksoft.dto.simpl.SimpleResponse;
-import peaksoft.dto.user.UserRequest;
-import peaksoft.dto.user.UserResponse;
+import peaksoft.dto.Basket.GetAllUsersBasketResponse;
+import peaksoft.dto.Favorite.FavoriteResponse;
+import peaksoft.dto.SimpleResponse;
+import peaksoft.dto.User.UserRequest;
+import peaksoft.dto.User.UserResponse;
+
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
-    AuthenticationResponse signUp(SignUpRequest signUpRequest);
-
-    AuthenticationResponse signIn(SignInRequest signInRequest);
-    List<UserResponse> getAllUser();
-    UserResponse getUser();
+    List<UserResponse> getAllUsers();
+    SimpleResponse saveUser(UserRequest userRequest);
+    SimpleResponse updateUser(Long id, UserRequest userRequest);
     UserResponse getUserById(Long id);
-    SimpleResponse updateUserById(Long id,UserRequest userRequest);
-    SimpleResponse deleteById(Long id);
+    SimpleResponse deleteUserById(Long id);
+    SimpleResponse addOrDeleteFavorite(Long productId);
+    List<FavoriteResponse> getAllUsersFavorites();
+    SimpleResponse addOrDeleteProductsToBasket(Long productId);
+    GetAllUsersBasketResponse getUsersAllBasketsProduct();
+    SimpleResponse deleteAllProductsFromBasket();
+
 }

@@ -1,17 +1,15 @@
 package peaksoft.service;
 
-import peaksoft.dto.comment.CommentRequest;
-import peaksoft.dto.comment.CommentResponse;
-import peaksoft.dto.simpl.SimpleResponse;
-import peaksoft.dto.user.UserRequest;
-import peaksoft.dto.user.UserResponse;
+import peaksoft.dto.Comment.CommentRequest;
+import peaksoft.dto.Comment.CommentResponse;
+import peaksoft.dto.SimpleResponse;
+
 
 import java.util.List;
 
 public interface CommentService {
-    SimpleResponse saveComment(CommentRequest commentRequest);
-    List<CommentResponse> getAllComment();
-    CommentResponse getCommentById(Long id);
-    SimpleResponse updateCommentById(Long id,CommentRequest commentRequest);
-    SimpleResponse deleteById(Long id);
+    List<CommentResponse> getAllComments();
+    SimpleResponse saveComment(CommentRequest commentRequest, Long userId, Long productId);
+    SimpleResponse deleteCommentById(Long id);
+    SimpleResponse updateComment(Long id,CommentRequest commentRequest);
 }

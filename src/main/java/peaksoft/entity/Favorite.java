@@ -3,22 +3,22 @@ package peaksoft.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import static jakarta.persistence.CascadeType.*;
-
 @Entity
 @Table(name = "favorites")
-@Setter
 @Getter
-@Builder
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Favorite {
     @Id
-    @GeneratedValue(generator = "favorite_gen",strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "favorite_gen",sequenceName = "favorite_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "favorites_gen")
+    @SequenceGenerator(name = "favorites_gen",sequenceName = "favorites_seq",allocationSize = 1)
     private Long id;
-    @ManyToOne(cascade = {DETACH,MERGE,REFRESH})
+
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
     private User user;
-    @ManyToOne(cascade = {DETACH,MERGE,REFRESH})
+
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
     private Product product;
 }
